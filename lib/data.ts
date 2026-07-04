@@ -57,7 +57,7 @@ export const procedures: Procedure[] = [
     name: "Endodontia",
     short: "Tratamento de canal com precisão e conforto.",
     description: "Tratamento endodôntico para salvar seu dente com conforto, segurança e tecnologia de ponta.",
-    image: "/images/endodontia_before.png",
+    image: "/images/exp-canal-v3.jpg",
   },
   {
     slug: "ortodontia",
@@ -71,7 +71,7 @@ export const procedures: Procedure[] = [
     name: "Implantodontia",
     short: "Implantes dentários de alta qualidade.",
     description: "Reabilitação com implantes dentários para restaurar estética, funcionalidade e confiança.",
-    image: "/images/implantodontia_before.png",
+    image: "/images/caso3-depois-v3.jpg",
   },
   {
     slug: "odontologia-integrada",
@@ -86,20 +86,20 @@ export const cases = [
   { 
     title: "Endodontia", 
     detail: "Tratamento de canal · Dente restaurado com sucesso",
-    before: "/images/endodontia_before.png",
-    after: "/images/endodontia_after.png"
+    before: "/images/caso1-antes-v2.jpg",
+    after: "/images/caso1-depois-v2.jpg"
   },
   { 
-    title: "Ortodontia", 
-    detail: "Alinhamento dental · Sorriso harmonioso",
-    before: "/images/ortodontia_before.png",
-    after: "/images/ortodontia_after.png"
+    title: "Reabilitação Oral", 
+    detail: "Reconstrução total · Sorriso harmonioso",
+    before: "/images/caso2-antes-v3.jpg",
+    after: "/images/caso2-depois-v3.jpg"
   },
   { 
     title: "Implantodontia", 
     detail: "Implante dental · Reabilitação completa",
-    before: "/images/implantodontia_before.png",
-    after: "/images/implantodontia_after.png"
+    before: "/images/caso3-antes-v3.jpg",
+    after: "/images/caso3-depois-v3.jpg"
   },
 ];
 
