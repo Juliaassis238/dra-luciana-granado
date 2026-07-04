@@ -131,13 +131,20 @@
   .saiba{color:var(--dourado);font-weight:600;text-transform:uppercase;font-size:0.8rem;border-bottom:1px solid;}
 
   .resultados-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:2.5rem;}
-  .compare-slider{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:ew-resize;}
-  .compare-after{position:absolute;inset:0;z-index:1;width:100%;}
-  .compare-before{position:absolute;inset:0;z-index:2;width:50%;overflow:hidden;border-right:2px solid var(--branco);}
-  .compare-before img, .compare-after img{width:100%;height:100%;object-fit:cover;pointer-events:none;}
-  /* Garantir que as imagens tenham o mesmo tamanho dentro do container */
-  .compare-before img { width: auto; height: 100%; max-width: none; }
-  .compare-after img { width: 100%; height: 100%; }
+  .compare-slider{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:ew-resize;background:#fcfcfc;}
+  .compare-after{position:absolute;inset:0;z-index:1;width:100%;height:100%;}
+  .compare-before{position:absolute;inset:0;z-index:2;width:50%;height:100%;overflow:hidden;border-right:3px solid var(--branco);box-shadow: 2px 0 8px rgba(0,0,0,0.1);}
+  .compare-before img, .compare-after img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .compare-before img { width: auto; min-width: 100%; }
   
   .compare-range{
     position:absolute;inset:0;width:100%;height:100%;opacity:0;z-index:10;cursor:pointer;
@@ -262,7 +269,7 @@
   <div class="container">
     <div class="exp-row reveal">
       <div class="exp-media">
-        <img src="images/exp-canal-v3.jpg" alt="Endodontia Especializada">
+        <img src="images/exp-canal-real.jpg" alt="Endodontia Especializada">
       </div>
       <div class="exp-text">
         <h3>Endodontia Especializada</h3>
@@ -411,14 +418,29 @@
   reveal();
 
   // Compare Slider Logic
-  const sliders = document.querySelectorAll('.compare-slider');
-  sliders.forEach(slider => {
-    const range = slider.querySelector('.compare-range');
-    const before = slider.querySelector('.compare-before');
-    range.oninput = (e) => {
-      before.style.width = e.target.value + '%';
-    };
-  });
+  const initSliders = () => {
+    const sliders = document.querySelectorAll('.compare-slider');
+    sliders.forEach(slider => {
+      const range = slider.querySelector('.compare-range');
+      const before = slider.querySelector('.compare-before');
+      const beforeImg = before.querySelector('img');
+      const afterImg = slider.querySelector('.compare-after img');
+      
+      const updateWidth = () => {
+        const width = slider.offsetWidth;
+        if (beforeImg) beforeImg.style.width = width + 'px';
+        if (afterImg) afterImg.style.width = width + 'px';
+      };
+
+      range.oninput = (e) => {
+        before.style.width = e.target.value + '%';
+      };
+
+      updateWidth();
+      window.addEventListener('resize', updateWidth);
+    });
+  };
+  initSliders();
 </script>
 
 </body>
