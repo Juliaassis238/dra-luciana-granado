@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const isGithubPages = process.env.NODE_ENV === "production";
-const basePath = isGithubPages ? "/gusman-luxo" : "";
+const basePath = isGithubPages ? "/dra-luciana-granado" : "";
 
 const nextConfig: NextConfig = {
   output: "export",
