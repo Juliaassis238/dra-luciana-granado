@@ -130,26 +130,19 @@
   .exp-text p{color:#ccc;margin-bottom:1.5rem;}
   .saiba{color:var(--dourado);font-weight:600;text-transform:uppercase;font-size:0.8rem;border-bottom:1px solid;}
 
-  .resultados-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:2.5rem;}
-  .compare-slider{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:ew-resize;background:#fcfcfc;}
-  .compare-after{position:absolute;inset:0;z-index:1;width:100%;height:100%;}
-  .compare-before{position:absolute;inset:0;z-index:2;width:50%;height:100%;overflow:hidden;border-right:3px solid var(--branco);box-shadow: 2px 0 8px rgba(0,0,0,0.1);}
-  .compare-before img, .compare-after img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    pointer-events: none;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  .compare-before img { width: auto; min-width: 100%; }
+  .resultados-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:2.5rem;}
+  .compare-card{background:var(--branco);border-radius:8px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.05);}
+  .compare-visual{position:relative;aspect-ratio:4/3;background:#f9f9f9;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .compare-visual img{width:100%;height:100%;object-fit:contain;display:none;}
+  .compare-visual img.active{display:block;}
   
-  .compare-range{
-    position:absolute;inset:0;width:100%;height:100%;opacity:0;z-index:10;cursor:pointer;
-  }
-  .compare-info{padding:1rem 0;}
+  .compare-tabs{display:flex;background:#f0f0f0;padding:4px;}
+  .tab-btn{flex:1;padding:0.6rem;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;border:none;cursor:pointer;background:transparent;color:var(--texto-suave);transition:all 0.3s;}
+  .tab-btn.active{background:var(--branco);color:var(--dourado);font-weight:600;box-shadow:0 2px 5px rgba(0,0,0,0.05);}
+  
+  .compare-info{padding:1.5rem;text-align:center;}
+  .compare-info h4{margin-bottom:0.5rem;color:var(--texto-escuro);}
+  .compare-info p{font-size:0.8rem;color:var(--texto-suave);}
 
   .sobre-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:center;}
   .sobre-img img{border-radius:4px;}
@@ -295,32 +288,53 @@
     <div class="sec-head center reveal">
       <span class="eyebrow">Casos Clínicos</span>
       <h2>Antes e Depois</h2>
-      <p style="color:var(--texto-suave); margin-top:1rem;">Arraste para ver a transformação real de nossos pacientes.</p>
+      <p style="color:var(--texto-suave); margin-top:1rem;">Clique em "Antes" e "Depois" para ver a transformação real de nossos pacientes.</p>
     </div>
     <div class="resultados-grid">
+      <!-- Caso 1 -->
       <div class="compare-card reveal">
-        <div class="compare-slider">
-          <div class="compare-after"><img src="images/caso1-depois-v2.jpg" alt="Depois"></div>
-          <div class="compare-before"><img src="images/caso1-antes-v2.jpg" alt="Antes"></div>
-          <input type="range" min="0" max="100" value="50" class="compare-range">
+        <div class="compare-tabs">
+          <button class="tab-btn active" data-target="before">Antes</button>
+          <button class="tab-btn" data-target="after">Depois</button>
         </div>
-        <div class="compare-info"><h4>Estética Dental</h4></div>
+        <div class="compare-visual">
+          <img src="images/caso1-antes-v2.jpg" alt="Antes" class="active" data-type="before">
+          <img src="images/caso1-depois-v2.jpg" alt="Depois" data-type="after">
+        </div>
+        <div class="compare-info">
+          <h4>Estética Dental</h4>
+          <p>Transformação completa do sorriso com facetas e clareamento.</p>
+        </div>
       </div>
+      <!-- Caso 2 -->
       <div class="compare-card reveal">
-        <div class="compare-slider">
-          <div class="compare-after"><img src="images/caso2-depois-v3.jpg" alt="Depois"></div>
-          <div class="compare-before"><img src="images/caso2-antes-v3.jpg" alt="Antes"></div>
-          <input type="range" min="0" max="100" value="50" class="compare-range">
+        <div class="compare-tabs">
+          <button class="tab-btn active" data-target="before">Antes</button>
+          <button class="tab-btn" data-target="after">Depois</button>
         </div>
-        <div class="compare-info"><h4>Reabilitação Oral</h4></div>
+        <div class="compare-visual">
+          <img src="images/caso2-antes-v3.jpg" alt="Antes" class="active" data-type="before">
+          <img src="images/caso2-depois-v3.jpg" alt="Depois" data-type="after">
+        </div>
+        <div class="compare-info">
+          <h4>Reabilitação Oral</h4>
+          <p>Restauração funcional e estética de toda a arcada dentária.</p>
+        </div>
       </div>
+      <!-- Caso 3 -->
       <div class="compare-card reveal">
-        <div class="compare-slider">
-          <div class="compare-after"><img src="images/caso3-depois-v3.jpg" alt="Depois"></div>
-          <div class="compare-before"><img src="images/caso3-antes-v3.jpg" alt="Antes"></div>
-          <input type="range" min="0" max="100" value="50" class="compare-range">
+        <div class="compare-tabs">
+          <button class="tab-btn active" data-target="before">Antes</button>
+          <button class="tab-btn" data-target="after">Depois</button>
         </div>
-        <div class="compare-info"><h4>Implantodontia</h4></div>
+        <div class="compare-visual">
+          <img src="images/caso3-antes-v3.jpg" alt="Antes" class="active" data-type="before">
+          <img src="images/caso3-depois-v3.jpg" alt="Depois" data-type="after">
+        </div>
+        <div class="compare-info">
+          <h4>Implantodontia</h4>
+          <p>Substituição de dentes ausentes com implantes de alta precisão.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -417,30 +431,34 @@
   window.addEventListener('scroll', reveal);
   reveal();
 
-  // Compare Slider Logic
-  const initSliders = () => {
-    const sliders = document.querySelectorAll('.compare-slider');
-    sliders.forEach(slider => {
-      const range = slider.querySelector('.compare-range');
-      const before = slider.querySelector('.compare-before');
-      const beforeImg = before.querySelector('img');
-      const afterImg = slider.querySelector('.compare-after img');
+  // Compare Tabs Logic
+  const initCompareTabs = () => {
+    const cards = document.querySelectorAll('.compare-card');
+    cards.forEach(card => {
+      const btns = card.querySelectorAll('.tab-btn');
+      const imgs = card.querySelectorAll('.compare-visual img');
       
-      const updateWidth = () => {
-        const width = slider.offsetWidth;
-        if (beforeImg) beforeImg.style.width = width + 'px';
-        if (afterImg) afterImg.style.width = width + 'px';
-      };
-
-      range.oninput = (e) => {
-        before.style.width = e.target.value + '%';
-      };
-
-      updateWidth();
-      window.addEventListener('resize', updateWidth);
+      btns.forEach(btn => {
+        btn.onclick = () => {
+          const target = btn.getAttribute('data-target');
+          
+          // Update buttons
+          btns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          // Update images
+          imgs.forEach(img => {
+            if (img.getAttribute('data-type') === target) {
+              img.classList.add('active');
+            } else {
+              img.classList.remove('active');
+            }
+          });
+        };
+      });
     });
   };
-  initSliders();
+  initCompareTabs();
 </script>
 
 </body>
